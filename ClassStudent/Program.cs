@@ -18,7 +18,7 @@ namespace ClassStudent
                 switch (choose)
                 {
                     case 1:
-                        TeacherList();
+                        TeacherList.TeacherAdd();
                 }
             }
         }
