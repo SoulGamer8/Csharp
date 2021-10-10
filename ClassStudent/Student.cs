@@ -50,12 +50,11 @@ namespace ClassStudent
             }
         }
 
-        public void GetInfo() 
+        public override void GetInfo()
         {
-            Console.WriteLine("Name {0}\nSurname {1}\nAge {2}\nSex {3}\nMarks {4}",
-                this._name,this._surname,this._age,this._sex,this.marks);
+            base.GetInfo();
+            Console.WriteLine($"mark: {0}",this.marks);
         }
-
 
         public static bool operator <(Student student1, Student student2)
         {
