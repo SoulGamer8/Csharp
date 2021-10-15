@@ -21,7 +21,7 @@ namespace ClassStudent
 
         public void GetInfo()
         {
-            Console.WriteLine("Country {0}\n District {1}\n City {2}\n Street {3}\n Housenumber {4}",
+            Console.WriteLine("Country {0}\nDistrict {1}\nCity {2}\nStreet {3}\nHousenumber {4}",
                 this._country,this._district,this._city,this._street,this._housenumber);
         }
     }

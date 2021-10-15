@@ -46,7 +46,7 @@ namespace ClassStudent
             Random rnd = new Random();
             for (int i=0; i < _evaluationArray.Length;i++)
             {
-                _evaluationArray[i] = rnd.Next(1, 5);
+                _evaluationArray[i] = rnd.Next(1, 6);
             }
         }
 

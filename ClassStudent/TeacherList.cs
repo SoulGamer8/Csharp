@@ -5,62 +5,94 @@ namespace ClassStudent
 {
     class TeacherList
     {
-        private List<Teacher> teachersList;
+        public List<Teacher> teachersList=new List<Teacher>();
+        
         
         public void TeacherAdd()
         {
-            Console.WriteLine("Name:");
+            Console.Write("Name: ");
             string name = Console.ReadLine();
-            Console.WriteLine("surname:");
+            Console.Write("Surname: ");
             string surname = Console.ReadLine();
-            Console.WriteLine("age:");
-            int age = Convert.ToInt16(Console.ReadLine());
-            Console.WriteLine("sex:");
+            
+            
+            Console.Write("Age: ");
+            string enteredAge = Console.ReadLine();
+            int age;
+            while(!int.TryParse(enteredAge,out age))
+            {
+                Console.Write("Isn`t number. Try again. Age: ");
+                enteredAge = Console.ReadLine();
+            }
+
+            Console.Write("Sex: ");
             char sex = Convert.ToChar(Console.ReadLine());
-            Console.WriteLine("limit:");
-            int limit = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("country:");
+            
+            Console.Write("Limit: ");
+            string enteredlimit = Console.ReadLine();
+            int limit;
+            while(!int.TryParse(enteredlimit,out limit))
+            {
+                Console.Write("Isn`t number. Try again. Limit: ");
+                enteredlimit = Console.ReadLine();
+            }
+            
+            Console.Write("Country: ");
             string country=Console.ReadLine();
-            Console.WriteLine("district:");
+            Console.Write("District: ");
             string district=Console.ReadLine();
-            Console.WriteLine("city:");
+            Console.Write("City: ");
             string city=Console.ReadLine();
-            Console.WriteLine("street:");
+            Console.Write("Street: ");
             string street=Console.ReadLine();
-            Console.WriteLine("housenumber:");
+            Console.Write("Housenumber: ");
             string housenumber=Console.ReadLine();
             
             Address address = new Address(country,district,city,street,housenumber);
-            Teacher teacher = new Teacher(name, surname, age, sex, address, limit);
-            teachersList.Insert(0,teacher);
+            teachersList.Add(new Teacher(name, surname, age, sex, address, limit));
+            Console.WriteLine("Teacher was added successfully");
         }
         
-        public void RemoveTeacher(string surname) 
+        public void RemoveTeacher(int number) 
         { 
-            foreach (Teacher i in teachersList)
-            {
-                if (surname == i.Surname)
-                {
-                    teachersList.Remove(i);
-                    Console.WriteLine($"teacher {0} {1} has succesfully removed.",
-                        i.Name,i.Surname);
-                    return ;
-                }
-
-            }
-        }
-
-        public void Sort() 
-        {
-            teachersList.Sort(); 
+            teachersList.RemoveAt(number);
+            Console.WriteLine("Teacher {0} {1} successfully deleted ",
+                teachersList[number].Name, teachersList[number].Surname );
         }
         
-        public void PrintLIstTeacher() 
+        public void PrintLIstTeacher()
         {
-            foreach (Teacher i in teachersList)
+            if (teachersList.Count == 0)
             {
-                i.GetInfo();
+                Console.WriteLine("Empty list");
             }
+            foreach (Teacher teacher in teachersList)
+            {
+                Console.WriteLine(teachersList.IndexOf(teacher) + " - " + teacher.Surname);
+            }
+        }
+        
+        public void PrintInfoTeacher(int number) 
+        {
+            teachersList[number].GetInfo();
+        }
+
+        public int FindTeacher(string surname,string name )
+        {
+            foreach (Teacher teacher in teachersList)
+            {
+                if (surname == teacher.Surname && name == teacher.Name)
+                {
+                    return teachersList.IndexOf(teacher);
+                }
+            }
+
+            return -1;
+        }
+
+        public void Sort()
+        {
+            teachersList.Sort(new HumanComparer());
         }
     }
 }

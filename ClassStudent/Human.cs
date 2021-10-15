@@ -44,7 +44,7 @@ namespace ClassStudent
         
         public virtual void GetInfo() 
         {
-            Console.WriteLine("Name {0}\n Surname {1}\n Age {2}\n Sex {3}",
+            Console.WriteLine("Name {0}\nSurname {1}\nAge {2}\nSex {3}",
                 this._name,this._surname,this._age,this._sex);
             _address.GetInfo();
         }
