@@ -7,7 +7,7 @@ namespace ClassStudent
         private int[] _evaluationArray;
         private Marks marks;
 
-        public Student(string name,string surname, int age, char sex,Address address)
+        public Student(string name,string surname, int age, string sex,Address address)
             : base(name,surname,age,sex,address)
         {
             marks = StudentType();

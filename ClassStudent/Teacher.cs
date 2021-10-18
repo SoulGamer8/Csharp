@@ -3,21 +3,30 @@ using System.Collections.Generic;
 
 namespace ClassStudent
 {
-    class Teacher:Human
+    class Teacher : Human
     {
         private List<Student> studentsList = new List<Student>();
-        private int _limitCounter=0;
-        private int _limitStudentList{ get; set; }
-        public Teacher(string name,string surname, int age, char sex,Address address,int limitStudentList )  
+        private int _limitCounter = 0;
+
+        public List<Student> StudentsList
+        {
+            get
+            {
+                return studentsList;
+            }
+        }
+
+        public int LimitStudentList { get; set; }
+        public Teacher(string name,string surname, int age, string sex,Address address,int limitStudentList )  
             : base(name,surname,age,sex,address)
         {
-            _limitStudentList = limitStudentList;
+            LimitStudentList = limitStudentList;
             studentsList = new List<Student>(limitStudentList);
         }
 
         public void AddStudent()
         {
-            if (_limitCounter < _limitStudentList)
+            if (_limitCounter < LimitStudentList)
             {
                 Console.Write("Name: ");
                 string name = Console.ReadLine();
@@ -35,17 +44,8 @@ namespace ClassStudent
                 }
 
                 Console.Write("Sex: ");
-                char sex = Convert.ToChar(Console.ReadLine());
-            
-                Console.Write("Limit: ");
-                string enteredlimit = Console.ReadLine();
-                int limit;
-                while(!int.TryParse(enteredlimit,out limit))
-                {
-                    Console.Write("Isn`t number. Try again. Limit: ");
-                    enteredlimit = Console.ReadLine();
-                }
-            
+                string sex = Console.ReadLine();
+                
                 Console.Write("Country: ");
                 string country=Console.ReadLine();
                 Console.Write("District: ");
@@ -65,23 +65,15 @@ namespace ClassStudent
                 Console.WriteLine("Students limit");
         }
 
-        public void RemoveStudent(string surname)
+        public void RemoveStudent(int number)
         {
             if (_limitCounter == 0)
                 Console.WriteLine("List empty");
             else
             {
-                foreach (Student i in studentsList)
-                {
-                    if (surname == i.Surname)
-                    {
-                        studentsList.Remove(i);
-                        Console.WriteLine($"Student {0} {1} has succesfully removed.",
-                            i.Name,i.Surname);
-                        _limitCounter--;
-                    }
-
-                }
+                studentsList.RemoveAt(number);
+                Console.WriteLine("Teacher {0} {1} successfully deleted ",
+                    studentsList[number].Name, studentsList[number].Surname );
             }
         }
 
@@ -99,6 +91,24 @@ namespace ClassStudent
             studentsList[number].GetInfo();
         }
 
+        public int FindStudent(string surname,string name )
+        {
+            foreach (Student students in studentsList)
+            {
+                if (surname == students.Surname && name == students.Name)
+                {
+                    return studentsList.IndexOf(students);
+                }
+            }
+
+            return -1;
+        }
+
+        public void SortStudent()
+        {
+            studentsList.Sort(new HumanComparer());
+        }
+        
         public override void GetInfo()
         {
             base.GetInfo();

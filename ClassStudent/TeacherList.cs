@@ -5,9 +5,20 @@ namespace ClassStudent
 {
     class TeacherList
     {
-        public List<Teacher> teachersList=new List<Teacher>();
+        private List<Teacher> teachersList=new List<Teacher>();
+
+        public List<Teacher> TeachersList
+        {
+            get
+            {
+                return teachersList;
+            }
+        }
         
-        
+        public void AddAll()
+        {
+            teachersList.Add(new Teacher("name","surname", 5, "sex", new Address("Ukr","Kherson","Kherson","Tyt","51f"), 3));
+        }
         public void TeacherAdd()
         {
             Console.Write("Name: ");
@@ -26,7 +37,7 @@ namespace ClassStudent
             }
 
             Console.Write("Sex: ");
-            char sex = Convert.ToChar(Console.ReadLine());
+            string sex = Console.ReadLine();
             
             Console.Write("Limit: ");
             string enteredlimit = Console.ReadLine();
@@ -93,6 +104,7 @@ namespace ClassStudent
         public void Sort()
         {
             teachersList.Sort(new HumanComparer());
+            Console.WriteLine("Successfully sorted ");
         }
     }
 }
