@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Text.Json;
+using System.Threading.Tasks;
 using System.Xml.Linq;
 namespace ClassStudent
 {
@@ -136,29 +137,32 @@ namespace ClassStudent
                 nameFile = Console.ReadLine();
             }
 
-            XDocument xDoc= new XDocument();
-            xDoc.Save(nameFile);
+            XDocument xvoc = new XDocument(new XElement("Human"));
+            xvoc.Save(nameFile);
+            
+            XDocument xDoc = XDocument.Load(nameFile);
             foreach (Teacher teacher in teacherList.TeachersList)
             {
-                XDocument teacherXml =new XDocument(new XElement("Teacher",
-                        new XAttribute("Surname", teacher.Surname),
-                        new XElement("Name", teacher.Name),
-                        new XElement("Age", teacher.Age),
-                        new XElement("Sex", teacher.Sex),
-                        new XElement("Country", teacher.Address.Country),
-                        new XElement("District", teacher.Address.District),
-                        new XElement("City", teacher.Address.City),
-                        new XElement("Street", teacher.Address.Street),
-                        new XElement("Housenumber", teacher.Address.Housenumber),
-                        new XElement("Limit", teacher.LimitStudentList)));
-                xDoc.Add(teacherXml);
+                xDoc.Element("Human").Add
+                (new XElement("Teacher",
+                            new XAttribute("Surname", teacher.Surname),
+                            new XElement("Name", teacher.Name),
+                            new XElement("Age", teacher.Age),
+                            new XElement("Sex", teacher.Sex),
+                            new XElement("Country", teacher.Address.Country),
+                            new XElement("District", teacher.Address.District),
+                            new XElement("City", teacher.Address.City),
+                            new XElement("Street", teacher.Address.Street),
+                            new XElement("Housenumber", teacher.Address.Housenumber),
+                            new XElement("Limit", teacher.LimitStudentList)));
             }
-
+            
             foreach (Teacher teacher in teacherList.TeachersList)
             {
                 foreach (Student student in teacher.StudentsList)
                 {
-                    XDocument studentXml =new XDocument(new XElement("Student",
+                    xDoc.Element("Human").Add(
+                        new XElement("Student",
                             new XAttribute("Surname", student.Surname),
                             new XElement("Name", student.Name),
                             new XElement("Age", student.Age),
@@ -168,31 +172,29 @@ namespace ClassStudent
                             new XElement("City", student.Address.City),
                             new XElement("Street", student.Address.Street),
                             new XElement("Housenumber", student.Address.Housenumber)));
-                    xDoc.Add(studentXml);
                 }
             }
-
             xDoc.Save(nameFile);
             Console.WriteLine("Data has been saved to file");
         }
             
         
-        private static void SaveJson(TeacherList teacherList)
+         static async Task SaveJson(TeacherList teacherList)
         {
-            Console.WriteLine("Name file:");
-            string nameFile = Console.ReadLine();
-            while (String.IsNullOrEmpty(nameFile))
+            var options = new JsonSerializerOptions
             {
-                Console.WriteLine("Name file:");
-                nameFile = Console.ReadLine();
-            }
+                WriteIndented = true
+            };
             
-                FileStream fs = new FileStream("nameFile.json", FileMode.OpenOrCreate);
-                JsonSerializer.SerializeAsync<TeacherList>(fs, teacherList);
-            
+            using (FileStream fs = new FileStream("user.json", FileMode.OpenOrCreate))
+            {
+                for (int i = 0; i < teacherList.TeachersList.Count; i++)
+                {
+                    await JsonSerializer.SerializeAsync<Teacher>(fs, teacherList.TeachersList[i],options);
+                }
 
-            Console.WriteLine("Data has been saved to file");
-            
+                Console.WriteLine("Data has been saved to file");
+            }
         }
     }
 }
