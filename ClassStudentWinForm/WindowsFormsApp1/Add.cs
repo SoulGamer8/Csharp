@@ -10,8 +10,15 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
+
     public partial class Add : Form
     {
+        private Form1 form;
+
+
+        public delegate void Save(string name, string surname, int age, string sex);
+        public static event Save SaveUser;
+
         public Add()
         {
             InitializeComponent();
@@ -32,9 +39,10 @@ namespace WindowsFormsApp1
             this.DialogResult = DialogResult.Cancel;
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
-
+            SaveUser?.Invoke(NameBox.Text, SurnameBox.Text, Convert.ToInt32(AgeBox.Text), SexBox.Text);
+            this.DialogResult = DialogResult.Cancel;
         }
     }
 }

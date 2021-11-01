@@ -13,12 +13,13 @@ namespace WindowsFormsApp1
     public partial class Form1 : Form
     {
         private TeacherList teacherList = new TeacherList();
+        private Add add = new Add();
 
-      
 
         public Form1()
         {
             InitializeComponent();
+             Add.SaveUser += SaveStudent;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -26,8 +27,8 @@ namespace WindowsFormsApp1
             teacherList.AddAll();
             teacherList.TeachersList[0].Add();
             InitialTree();
-            InitialGrid();
             InitialChart();
+
         }
 
 
@@ -94,8 +95,22 @@ namespace WindowsFormsApp1
             {
                 dataTable.Rows.Add(i, teacher.Name, teacher.Surname, teacher.Age, teacher.Sex, teacher.Address.Country, teacher.Address.District, teacher.Address.City, teacher.Address.Street, teacher.Address.Housenumber);
                 i++;
+                int j = 0;
+                foreach (Student student in teacher.StudentsList)
+                {
+                    dataTable.Rows.Add(j, student.Name, student.Surname, student.Age, student.Sex, student.Address.Country, student.Address.District, student.Address.City, student.Address.Street, student.Address.Housenumber);
+                    j++;
+                }
             }
             this.dataGridView1.DataSource = dataTable;
+        }
+
+
+
+        public  void SaveStudent(string name, string surname, int age, string sex)
+        {
+            teacherList.TeachersList[0].AddStudent(name, surname, age, sex);
+            InitialGrid();
         }
 
         private void InitialChart()
@@ -119,12 +134,6 @@ namespace WindowsFormsApp1
         {
             Add add = new Add();
             DialogResult result = add.ShowDialog(this);
-
-            if(result == DialogResult.Cancel) return;
-
-            teacherList.TeachersList[0].AddStudent(add.NameBox.Text, add.SurnameBox.Text,Convert.ToInt32( add.AgeBox.Text), add.SexBox.Text);
-
-            InitialGrid();
         }
     }
 }

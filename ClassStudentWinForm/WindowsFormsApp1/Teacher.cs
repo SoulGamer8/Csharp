@@ -42,7 +42,6 @@ namespace WindowsFormsApp1
                 Address address = new Address("fr", "ge", "gre", "ger", "greghr");
                 studentsList.Add(new Student(name, surname, age, sex, address));
                 _limitCounter++;
-                Console.WriteLine("Students was added successfully");
             }
             else
                 Console.WriteLine("Students limit");
