@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1
 {
-    class Address
+    public class Address
     {
         public string Country { get; private set; }
         public string District { get; private set; }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1
 {
-    enum Marks
+    public enum Marks
     {
         A,
         B,

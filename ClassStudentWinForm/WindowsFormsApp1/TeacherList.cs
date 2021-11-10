@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1
 {
-    class TeacherList
+    public class TeacherList
     {
         private List<Teacher> teachersList = new List<Teacher>();
 
-        public List<Teacher> TeachersList
+        public List<Teacher> TeachersLst
         {
             get
             {
@@ -18,39 +18,18 @@ namespace WindowsFormsApp1
             }
         }
 
-        public void AddAll()
+    
+        public void TeacherAdd(string name, string surname, int age, string sex, string country, string district, string city, string street, string housenumber, int studentLimit)
         {
-            teachersList.Add(new Teacher("name", "surname", 5, "sex", new Address("Ukr", "Kherson", "Kherson", "Tyt", "51f"), 3));
-            teachersList.Add(new Teacher("name2", "surname2", 7, "sex2", new Address("Ukr2", "Kherson2", "Khe2rson", "Tyt2", "51f2"), 3));
-        }
-        public void TeacherAdd(string name, string surname,int  age, string sex)
-        {
-            teachersList.Add(new Teacher(name, surname, age, sex, new Address("f", "q", "e", "r", "f"), 5));
+            teachersList.Add(new Teacher(name, surname, age, sex, new Address(country,district, city,street ,housenumber), studentLimit));
         }
 
         public void RemoveTeacher(int number)
         {
             teachersList.RemoveAt(number);
-            Console.WriteLine("Teacher {0} {1} successfully deleted ",
-                teachersList[number].Name, teachersList[number].Surname);
         }
 
-        public void PrintLIstTeacher()
-        {
-            if (teachersList.Count == 0)
-            {
-                Console.WriteLine("Empty list");
-            }
-            foreach (Teacher teacher in teachersList)
-            {
-                Console.WriteLine(teachersList.IndexOf(teacher) + " - " + teacher.Surname);
-            }
-        }
-
-        public void PrintInfoTeacher(int number)
-        {
-            teachersList[number].GetInfo();
-        }
+      
 
         public int FindTeacher(string surname, string name)
         {
@@ -64,11 +43,6 @@ namespace WindowsFormsApp1
 
             return -1;
         }
-        /*
-        public void Sort()
-        {
-            teachersList.Sort(new HumanComparer());
-            Console.WriteLine("Successfully sorted ");
-        }*/
+
     }
 }

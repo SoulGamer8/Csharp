@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApp1
 {
-    partial class Add
+    partial class AddStudent
     {
         /// <summary>
         /// Required designer variable.
@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddStudent));
             this.NameBox = new System.Windows.Forms.TextBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.SurnameBox = new System.Windows.Forms.TextBox();
@@ -42,134 +43,180 @@
             this.SexLabel = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.StreetBox = new System.Windows.Forms.TextBox();
+            this.CountryBox = new System.Windows.Forms.TextBox();
+            this.DistrictBox = new System.Windows.Forms.TextBox();
+            this.CityBox4 = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.HousenumberBox = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // NameBox
             // 
-            this.NameBox.Location = new System.Drawing.Point(101, 12);
+            resources.ApplyResources(this.NameBox, "NameBox");
             this.NameBox.Name = "NameBox";
-            this.NameBox.Size = new System.Drawing.Size(121, 20);
-            this.NameBox.TabIndex = 0;
             // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            resources.ApplyResources(this.contextMenuStrip1, "contextMenuStrip1");
             // 
             // SurnameBox
             // 
-            this.SurnameBox.Location = new System.Drawing.Point(101, 38);
+            resources.ApplyResources(this.SurnameBox, "SurnameBox");
             this.SurnameBox.Name = "SurnameBox";
-            this.SurnameBox.Size = new System.Drawing.Size(121, 20);
-            this.SurnameBox.TabIndex = 2;
             // 
             // AgeBox
             // 
-            this.AgeBox.Location = new System.Drawing.Point(101, 64);
+            resources.ApplyResources(this.AgeBox, "AgeBox");
             this.AgeBox.Name = "AgeBox";
-            this.AgeBox.Size = new System.Drawing.Size(121, 20);
-            this.AgeBox.TabIndex = 3;
             // 
             // SexBox
             // 
-            this.SexBox.Location = new System.Drawing.Point(101, 90);
+            resources.ApplyResources(this.SexBox, "SexBox");
             this.SexBox.Name = "SexBox";
-            this.SexBox.Size = new System.Drawing.Size(121, 20);
-            this.SexBox.TabIndex = 4;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(210, 305);
+            resources.ApplyResources(this.button1, "button1");
             this.button1.Name = "button1";
-            this.button1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button1.Size = new System.Drawing.Size(78, 29);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Cancel";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(123, 305);
+            resources.ApplyResources(this.button2, "button2");
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(78, 29);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "OK";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // NameLabel
             // 
-            this.NameLabel.AutoSize = true;
-            this.NameLabel.Location = new System.Drawing.Point(60, 19);
+            resources.ApplyResources(this.NameLabel, "NameLabel");
             this.NameLabel.Name = "NameLabel";
-            this.NameLabel.Size = new System.Drawing.Size(35, 13);
-            this.NameLabel.TabIndex = 7;
-            this.NameLabel.Text = "Name";
             // 
             // SurnameLabel
             // 
-            this.SurnameLabel.AutoSize = true;
-            this.SurnameLabel.Location = new System.Drawing.Point(46, 45);
+            resources.ApplyResources(this.SurnameLabel, "SurnameLabel");
             this.SurnameLabel.Name = "SurnameLabel";
-            this.SurnameLabel.Size = new System.Drawing.Size(49, 13);
-            this.SurnameLabel.TabIndex = 8;
-            this.SurnameLabel.Text = "Surname";
             // 
             // AgeLabel
             // 
-            this.AgeLabel.AutoSize = true;
-            this.AgeLabel.Location = new System.Drawing.Point(69, 71);
+            resources.ApplyResources(this.AgeLabel, "AgeLabel");
             this.AgeLabel.Name = "AgeLabel";
-            this.AgeLabel.Size = new System.Drawing.Size(26, 13);
-            this.AgeLabel.TabIndex = 9;
-            this.AgeLabel.Text = "Age";
             // 
             // SexLabel
             // 
-            this.SexLabel.AutoSize = true;
-            this.SexLabel.Location = new System.Drawing.Point(70, 93);
+            resources.ApplyResources(this.SexLabel, "SexLabel");
             this.SexLabel.Name = "SexLabel";
-            this.SexLabel.Size = new System.Drawing.Size(25, 13);
-            this.SexLabel.TabIndex = 10;
-            this.SexLabel.Text = "Sex";
             // 
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(101, 116);
+            resources.ApplyResources(this.comboBox1, "comboBox1");
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 11;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(64, 119);
+            resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(31, 13);
-            this.label1.TabIndex = 12;
-            this.label1.Text = "Mark";
             // 
-            // Add
+            // StreetBox
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this.StreetBox, "StreetBox");
+            this.StreetBox.Name = "StreetBox";
+            // 
+            // CountryBox
+            // 
+            resources.ApplyResources(this.CountryBox, "CountryBox");
+            this.CountryBox.Name = "CountryBox";
+            // 
+            // DistrictBox
+            // 
+            resources.ApplyResources(this.DistrictBox, "DistrictBox");
+            this.DistrictBox.Name = "DistrictBox";
+            // 
+            // CityBox4
+            // 
+            resources.ApplyResources(this.CityBox4, "CityBox4");
+            this.CityBox4.Name = "CityBox4";
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
+            // label3
+            // 
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.Name = "label3";
+            // 
+            // label4
+            // 
+            resources.ApplyResources(this.label4, "label4");
+            this.label4.Name = "label4";
+            // 
+            // label5
+            // 
+            resources.ApplyResources(this.label5, "label5");
+            this.label5.Name = "label5";
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            resources.ApplyResources(this.comboBox2, "comboBox2");
+            this.comboBox2.Name = "comboBox2";
+            // 
+            // label6
+            // 
+            resources.ApplyResources(this.label6, "label6");
+            this.label6.Name = "label6";
+            // 
+            // HousenumberBox
+            // 
+            resources.ApplyResources(this.HousenumberBox, "HousenumberBox");
+            this.HousenumberBox.Name = "HousenumberBox";
+            // 
+            // label7
+            // 
+            resources.ApplyResources(this.label7, "label7");
+            this.label7.Name = "label7";
+            // 
+            // AddStudent
+            // 
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(300, 346);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.SexLabel);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.AgeLabel);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.SurnameLabel);
             this.Controls.Add(this.NameLabel);
             this.Controls.Add(this.button2);
+            this.Controls.Add(this.CityBox4);
             this.Controls.Add(this.button1);
+            this.Controls.Add(this.DistrictBox);
             this.Controls.Add(this.SexBox);
+            this.Controls.Add(this.CountryBox);
             this.Controls.Add(this.AgeBox);
+            this.Controls.Add(this.HousenumberBox);
+            this.Controls.Add(this.StreetBox);
             this.Controls.Add(this.SurnameBox);
             this.Controls.Add(this.NameBox);
-            this.Name = "Add";
-            this.Text = "Add";
+            this.Name = "AddStudent";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -189,5 +236,17 @@
         protected internal System.Windows.Forms.TextBox SurnameBox;
         protected internal System.Windows.Forms.TextBox AgeBox;
         protected internal System.Windows.Forms.TextBox SexBox;
+        protected internal System.Windows.Forms.TextBox StreetBox;
+        protected internal System.Windows.Forms.TextBox CountryBox;
+        protected internal System.Windows.Forms.TextBox DistrictBox;
+        protected internal System.Windows.Forms.TextBox CityBox4;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.Label label6;
+        protected internal System.Windows.Forms.TextBox HousenumberBox;
+        private System.Windows.Forms.Label label7;
     }
 }

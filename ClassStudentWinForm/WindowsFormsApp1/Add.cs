@@ -1,28 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
-
-    public partial class Add : Form
+    public partial class AddStudent : Form
     {
-        private Form1 form;
+        public delegate void SaveStudent(string name, string surname, int age, string sex, string country,string district,string city ,string street ,string housenumber, string teacher, string mark);
+        public static event SaveStudent EventSaveStudent;
 
 
-        public delegate void Save(string name, string surname, int age, string sex);
-        public static event Save SaveUser;
-
-        public Add()
+        private TeacherList _teacherList;
+        public AddStudent(TeacherList teacherList)
         {
+            _teacherList = teacherList;
             InitializeComponent();
             InitialComboBox();
+            InitialComboBoxTeacher();
         }
 
         private void InitialComboBox()
@@ -33,6 +26,18 @@ namespace WindowsFormsApp1
             comboBox1.Items.Add(Marks.D);
             comboBox1.Items.Add(Marks.F);
         }
+        private void InitialComboBoxTeacher()
+        {
+            foreach (Teacher teacher in _teacherList.TeachersLst)
+            {
+                if (teacher.LimitStudentList == teacher.StudentsList.Count)
+                    continue;
+                else
+                    comboBox2.Items.Add(teacher.Surname + " " + teacher.Name);
+            }
+   
+           
+        }
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -41,8 +46,24 @@ namespace WindowsFormsApp1
 
         private void button2_Click(object sender, EventArgs e)
         {
-            SaveUser?.Invoke(NameBox.Text, SurnameBox.Text, Convert.ToInt32(AgeBox.Text), SexBox.Text);
-            this.DialogResult = DialogResult.Cancel;
+            int test;
+            string[] words = comboBox2.Text.Split(' ');
+            int numberTeacher = _teacherList.FindTeacher(words[0], words[1]);
+
+            if (!(int.TryParse(AgeBox.Text, out test)))
+            {
+                MessageBox.Show("Age must be number");
+            }
+            /*else if(_teacherList.TeachersLst[numberTeacher].LimitStudentList == _teacherList.TeachersLst[numberTeacher].StudentsList.Count)
+            {
+                MessageBox.Show("Limit ");
+            }*/
+            else
+            {
+                EventSaveStudent?.Invoke(NameBox.Text, SurnameBox.Text, Convert.ToInt32(AgeBox.Text), SexBox.Text, CountryBox.Text, DistrictBox.Text, CityBox4.Text, StreetBox.Text, HousenumberBox.Text, comboBox2.Text,comboBox1.Text);
+                this.DialogResult = DialogResult.Cancel;
+            }
         }
+
     }
 }
