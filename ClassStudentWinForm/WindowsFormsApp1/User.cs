@@ -8,35 +8,22 @@ namespace WindowsFormsApp1
 {
     public class User
     {
-        private Address _address;
+        public Address Address { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
         public int Age { get; set; }
         public string Sex { get; set; }
 
-
-        public Address Address
+        protected User(int id,string name, string surname, int age, string sex, Address address)
         {
-            get
-            {
-                return _address;
-            }
-        }
-
-        public User(string name, string surname, int age, string sex, Address address)
-        {
+            Id = id;
             Name = name;
             Surname = surname;
             Age = age;
             Sex = sex;
-            _address = address;
+            Address = address;
         }
 
-        public virtual void GetInfo()
-        {
-            Console.WriteLine("Name {0}\nSurname {1}\nAge {2}\nSex {3}",
-                Name, Surname, Age, Sex);
-            _address.GetInfo();
-        }
     }
 }

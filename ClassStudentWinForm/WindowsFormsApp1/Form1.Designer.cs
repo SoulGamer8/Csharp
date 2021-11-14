@@ -29,9 +29,9 @@ namespace WindowsFormsApp1
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.treeView2 = new System.Windows.Forms.TreeView();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -50,12 +50,10 @@ namespace WindowsFormsApp1
             this.button2 = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // treeView2
@@ -80,19 +78,20 @@ namespace WindowsFormsApp1
             this.dataGridView1.Size = new System.Drawing.Size(700, 269);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            this.dataGridView1.Sorted += new System.EventHandler(this.dataGridView1_Sorted);
             // 
             // chart1
             // 
-            chartArea3.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.chart1.Legends.Add(legend3);
+            chartArea2.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chart1.Legends.Add(legend2);
             this.chart1.Location = new System.Drawing.Point(902, 260);
             this.chart1.Name = "chart1";
-            series3.ChartArea = "ChartArea1";
-            series3.Legend = "Legend1";
-            series3.Name = "Age";
-            this.chart1.Series.Add(series3);
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Age";
+            this.chart1.Series.Add(series2);
             this.chart1.Size = new System.Drawing.Size(328, 213);
             this.chart1.TabIndex = 4;
             this.chart1.Text = "chart1";
@@ -108,15 +107,16 @@ namespace WindowsFormsApp1
             // 
             // addNewStudentToolStripMenuItem
             // 
+            this.addNewStudentToolStripMenuItem.Enabled = false;
             this.addNewStudentToolStripMenuItem.Name = "addNewStudentToolStripMenuItem";
-            this.addNewStudentToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.addNewStudentToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.addNewStudentToolStripMenuItem.Text = "Add new student";
             this.addNewStudentToolStripMenuItem.Click += new System.EventHandler(this.addNewStudentToolStripMenuItem_Click);
             // 
             // addNewTeacherToolStripMenuItem
             // 
             this.addNewTeacherToolStripMenuItem.Name = "addNewTeacherToolStripMenuItem";
-            this.addNewTeacherToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.addNewTeacherToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.addNewTeacherToolStripMenuItem.Text = "Add new teacher";
             this.addNewTeacherToolStripMenuItem.Click += new System.EventHandler(this.addNewTeacherToolStripMenuItem_Click);
             // 
@@ -218,19 +218,9 @@ namespace WindowsFormsApp1
             this.label2.TabIndex = 10;
             this.label2.Text = "Surname:";
             // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Location = new System.Drawing.Point(718, 331);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(126, 90);
-            this.pictureBox2.TabIndex = 12;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.Visible = false;
-            // 
             // Main
             // 
             this.ClientSize = new System.Drawing.Size(1267, 583);
-            this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button2);
@@ -251,7 +241,6 @@ namespace WindowsFormsApp1
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -277,7 +266,6 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }
 

@@ -22,16 +22,16 @@ namespace WindowsFormsApp1
         public int LimitStudentList { get; set; }
       
 
-        public Teacher(string name, string surname, int age, string sex, Address address, int limitStudentList)
-            : base(name, surname, age, sex, address)
+        public Teacher(int id,string name, string surname, int age, string sex, Address address, int limitStudentList)
+            : base(id,name, surname, age, sex, address)
         {
             LimitStudentList = limitStudentList;
             studentsList = new List<Student>(limitStudentList);
         }
 
-        public void AddStudent(string name, string surname,int age, string sex, string country, string district, string city , string street , string housenumber, string marks)
+        public void AddStudent(int id ,string name, string surname,int age, string sex, string country, string district, string city , string street , string housenumber, string marks)
         {
-            studentsList.Add(new Student(name, surname, age, sex, new Address(country, district, city , street , housenumber), marks));
+            studentsList.Add(new Student(id,name, surname, age, sex, new Address(country, district, city , street , housenumber), marks));
             _limitCounter++;
         }
 

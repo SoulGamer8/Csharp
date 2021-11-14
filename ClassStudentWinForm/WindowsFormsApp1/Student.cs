@@ -10,19 +10,19 @@ namespace WindowsFormsApp1
     {
         public string Marks;
 
-        public Student(string name, string surname, int age, string sex, Address address, string marks)
-            : base(name, surname, age, sex, address)
+        public Student(int id,string name, string surname, int age, string sex, Address address, string marks)
+            : base(id, name, surname, age, sex, address)
         {
             Marks = marks;
         }
         /*
         public static bool operator <(Student student1, Student student2)
         {
-            return student1.Marks < student2.Marks;
+            return student1.age < student2.age;
         }
         public static bool operator >(Student student1, Student student2)
         {
-            return student1.Marks > student2.Marks;
+            return student1.age > student2.age;
         }*/
     }
 }

@@ -55,12 +55,15 @@
             this.label6 = new System.Windows.Forms.Label();
             this.HousenumberBox = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // NameBox
             // 
             resources.ApplyResources(this.NameBox, "NameBox");
             this.NameBox.Name = "NameBox";
+            this.NameBox.Validated += new System.EventHandler(this.NameBox_Validated);
             // 
             // contextMenuStrip1
             // 
@@ -71,16 +74,19 @@
             // 
             resources.ApplyResources(this.SurnameBox, "SurnameBox");
             this.SurnameBox.Name = "SurnameBox";
+            this.SurnameBox.Validated += new System.EventHandler(this.SurnameBox_Validated);
             // 
             // AgeBox
             // 
             resources.ApplyResources(this.AgeBox, "AgeBox");
             this.AgeBox.Name = "AgeBox";
+            this.AgeBox.Validated += new System.EventHandler(this.AgeBox_Validated);
             // 
             // SexBox
             // 
             resources.ApplyResources(this.SexBox, "SexBox");
             this.SexBox.Name = "SexBox";
+            this.SexBox.Validated += new System.EventHandler(this.SexBox_Validated);
             // 
             // button1
             // 
@@ -121,6 +127,7 @@
             this.comboBox1.FormattingEnabled = true;
             resources.ApplyResources(this.comboBox1, "comboBox1");
             this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Validated += new System.EventHandler(this.comboBox1_Validated);
             // 
             // label1
             // 
@@ -131,21 +138,25 @@
             // 
             resources.ApplyResources(this.StreetBox, "StreetBox");
             this.StreetBox.Name = "StreetBox";
+            this.StreetBox.Validated += new System.EventHandler(this.StreetBox_Validated);
             // 
             // CountryBox
             // 
             resources.ApplyResources(this.CountryBox, "CountryBox");
             this.CountryBox.Name = "CountryBox";
+            this.CountryBox.Validated += new System.EventHandler(this.CountryBox_Validated);
             // 
             // DistrictBox
             // 
             resources.ApplyResources(this.DistrictBox, "DistrictBox");
             this.DistrictBox.Name = "DistrictBox";
+            this.DistrictBox.Validated += new System.EventHandler(this.DistrictBox_Validated);
             // 
             // CityBox4
             // 
             resources.ApplyResources(this.CityBox4, "CityBox4");
             this.CityBox4.Name = "CityBox4";
+            this.CityBox4.Validated += new System.EventHandler(this.CityBox4_Validated);
             // 
             // label2
             // 
@@ -172,6 +183,7 @@
             this.comboBox2.FormattingEnabled = true;
             resources.ApplyResources(this.comboBox2, "comboBox2");
             this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Validated += new System.EventHandler(this.comboBox2_Validated);
             // 
             // label6
             // 
@@ -182,11 +194,16 @@
             // 
             resources.ApplyResources(this.HousenumberBox, "HousenumberBox");
             this.HousenumberBox.Name = "HousenumberBox";
+            this.HousenumberBox.Validated += new System.EventHandler(this.HousenumberBox_Validated);
             // 
             // label7
             // 
             resources.ApplyResources(this.label7, "label7");
             this.label7.Name = "label7";
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
             // 
             // AddStudent
             // 
@@ -217,6 +234,7 @@
             this.Controls.Add(this.SurnameBox);
             this.Controls.Add(this.NameBox);
             this.Name = "AddStudent";
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -248,5 +266,6 @@
         private System.Windows.Forms.Label label6;
         protected internal System.Windows.Forms.TextBox HousenumberBox;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -50,6 +51,8 @@
             this.HousenumberBox = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // label7
@@ -148,6 +151,7 @@
             this.NameBox.Name = "NameBox";
             this.NameBox.Size = new System.Drawing.Size(121, 20);
             this.NameBox.TabIndex = 0;
+            this.NameBox.Validated += new System.EventHandler(this.NameBox_Validated);
             // 
             // SurnameBox
             // 
@@ -155,6 +159,7 @@
             this.SurnameBox.Name = "SurnameBox";
             this.SurnameBox.Size = new System.Drawing.Size(121, 20);
             this.SurnameBox.TabIndex = 1;
+            this.SurnameBox.Validated += new System.EventHandler(this.SurnameBox_Validated);
             // 
             // AgeBox
             // 
@@ -162,6 +167,7 @@
             this.AgeBox.Name = "AgeBox";
             this.AgeBox.Size = new System.Drawing.Size(121, 20);
             this.AgeBox.TabIndex = 2;
+            this.AgeBox.Validated += new System.EventHandler(this.AgeBox_Validated);
             // 
             // SexBox
             // 
@@ -169,6 +175,7 @@
             this.SexBox.Name = "SexBox";
             this.SexBox.Size = new System.Drawing.Size(121, 20);
             this.SexBox.TabIndex = 3;
+            this.SexBox.Validated += new System.EventHandler(this.SexBox_Validated);
             // 
             // StudentLimittBox
             // 
@@ -176,6 +183,7 @@
             this.StudentLimittBox.Name = "StudentLimittBox";
             this.StudentLimittBox.Size = new System.Drawing.Size(121, 20);
             this.StudentLimittBox.TabIndex = 4;
+            this.StudentLimittBox.Validated += new System.EventHandler(this.StudentLimittBox_Validated);
             // 
             // CountryBox
             // 
@@ -183,6 +191,7 @@
             this.CountryBox.Name = "CountryBox";
             this.CountryBox.Size = new System.Drawing.Size(121, 20);
             this.CountryBox.TabIndex = 5;
+            this.CountryBox.Validated += new System.EventHandler(this.CountryBox_Validated);
             // 
             // DistrictBox
             // 
@@ -190,6 +199,7 @@
             this.DistrictBox.Name = "DistrictBox";
             this.DistrictBox.Size = new System.Drawing.Size(121, 20);
             this.DistrictBox.TabIndex = 6;
+            this.DistrictBox.Validated += new System.EventHandler(this.DistrictBox_Validated);
             // 
             // CityBox4
             // 
@@ -197,6 +207,7 @@
             this.CityBox4.Name = "CityBox4";
             this.CityBox4.Size = new System.Drawing.Size(121, 20);
             this.CityBox4.TabIndex = 7;
+            this.CityBox4.Validated += new System.EventHandler(this.CityBox4_Validated);
             // 
             // StreetBox
             // 
@@ -204,6 +215,7 @@
             this.StreetBox.Name = "StreetBox";
             this.StreetBox.Size = new System.Drawing.Size(121, 20);
             this.StreetBox.TabIndex = 8;
+            this.StreetBox.Validated += new System.EventHandler(this.StreetBox_Validated);
             // 
             // HousenumberBox
             // 
@@ -211,6 +223,7 @@
             this.HousenumberBox.Name = "HousenumberBox";
             this.HousenumberBox.Size = new System.Drawing.Size(121, 20);
             this.HousenumberBox.TabIndex = 9;
+            this.HousenumberBox.Validated += new System.EventHandler(this.HousenumberBox_Validated);
             // 
             // button2
             // 
@@ -232,6 +245,10 @@
             this.button1.Text = "Cancel";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
             // 
             // AddTeacher
             // 
@@ -262,6 +279,7 @@
             this.Controls.Add(this.button1);
             this.Name = "AddTeacher";
             this.Text = "Add Teacher";
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -291,5 +309,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }
