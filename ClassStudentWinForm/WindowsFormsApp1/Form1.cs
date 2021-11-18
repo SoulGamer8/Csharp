@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 using System.Drawing;
 using System.Data;
 using System.Windows.Forms;
+using System.Runtime.Serialization.Formatters.Soap;
 
 namespace WindowsFormsApp1
 {
@@ -349,10 +350,19 @@ namespace WindowsFormsApp1
 
         private void loadToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            openFileDialog1.Filter = "Text files(*.json)|*.json|All files(*.*)|*.*";
+            openFileDialog1.Filter = "Text files(*.json,*.soap)|*.json;*.soap|All files(*.*)|*.*";
+            SoapFormatter formatter = new SoapFormatter();
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                teacherList = JsonConvert.DeserializeObject<TeacherList>(File.ReadAllText(openFileDialog1.FileName)); 
+                if (openFileDialog1.FileName.EndsWith(".json"))
+                    teacherList = JsonConvert.DeserializeObject<TeacherList>(File.ReadAllText(openFileDialog1.FileName));
+                if (openFileDialog1.FileName.EndsWith(".soap"))
+                {
+                    using (FileStream fs = new FileStream(openFileDialog1.FileName, FileMode.OpenOrCreate))
+                    {
+                        teacherList = (TeacherList)formatter.Deserialize(fs);
+                    }
+                }
                 Reload();
             }
         }
@@ -362,9 +372,8 @@ namespace WindowsFormsApp1
             (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = $"Surname LIKE '%{textBox1.Text}%'";
         }
 
-        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        private void jSONToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string catalog = @"..\save";
             saveFileDialog1.Filter = "Text files(*.json)|*.json|All files(*.*)|*.*";
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
@@ -378,6 +387,20 @@ namespace WindowsFormsApp1
             }
         }
 
+        private void sOAPToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            saveFileDialog1.Filter = "Text files(*.soap)|*.soap|All files(*.*)|*.*";
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                SoapFormatter formatter = new SoapFormatter();
+                using (FileStream fs = new FileStream(saveFileDialog1.FileName, FileMode.OpenOrCreate))
+                {
+                    // сериализация (сохранение объекта в поток)
+                    formatter.Serialize(fs, teacherList);
+                }
+            }
+        }
 
         private void button2_Click(object sender, EventArgs e)
         {

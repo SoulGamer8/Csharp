@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1
 {
+    [Serializable]
     public class Student:User
     {
         public string Marks;

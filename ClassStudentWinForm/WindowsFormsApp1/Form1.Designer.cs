@@ -50,6 +50,8 @@ namespace WindowsFormsApp1
             this.button2 = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.jSONToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sOAPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -109,14 +111,14 @@ namespace WindowsFormsApp1
             // 
             this.addNewStudentToolStripMenuItem.Enabled = false;
             this.addNewStudentToolStripMenuItem.Name = "addNewStudentToolStripMenuItem";
-            this.addNewStudentToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addNewStudentToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.addNewStudentToolStripMenuItem.Text = "Add new student";
             this.addNewStudentToolStripMenuItem.Click += new System.EventHandler(this.addNewStudentToolStripMenuItem_Click);
             // 
             // addNewTeacherToolStripMenuItem
             // 
             this.addNewTeacherToolStripMenuItem.Name = "addNewTeacherToolStripMenuItem";
-            this.addNewTeacherToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addNewTeacherToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.addNewTeacherToolStripMenuItem.Text = "Add new teacher";
             this.addNewTeacherToolStripMenuItem.Click += new System.EventHandler(this.addNewTeacherToolStripMenuItem_Click);
             // 
@@ -141,10 +143,12 @@ namespace WindowsFormsApp1
             // 
             // saveToolStripMenuItem
             // 
+            this.saveToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.jSONToolStripMenuItem,
+            this.sOAPToolStripMenuItem});
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             this.saveToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
             this.saveToolStripMenuItem.Text = "Save";
-            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // textBox1
             // 
@@ -218,6 +222,20 @@ namespace WindowsFormsApp1
             this.label2.TabIndex = 10;
             this.label2.Text = "Surname:";
             // 
+            // jSONToolStripMenuItem
+            // 
+            this.jSONToolStripMenuItem.Name = "jSONToolStripMenuItem";
+            this.jSONToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.jSONToolStripMenuItem.Text = "JSON";
+            this.jSONToolStripMenuItem.Click += new System.EventHandler(this.jSONToolStripMenuItem_Click);
+            // 
+            // sOAPToolStripMenuItem
+            // 
+            this.sOAPToolStripMenuItem.Name = "sOAPToolStripMenuItem";
+            this.sOAPToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.sOAPToolStripMenuItem.Text = "SOAP";
+            this.sOAPToolStripMenuItem.Click += new System.EventHandler(this.sOAPToolStripMenuItem_Click);
+            // 
             // Main
             // 
             this.ClientSize = new System.Drawing.Size(1267, 583);
@@ -266,6 +284,8 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ToolStripMenuItem jSONToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem sOAPToolStripMenuItem;
     }
 }
 

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1
 {
+    [Serializable]
     public class User
     {
         public Address Address { get; set; }

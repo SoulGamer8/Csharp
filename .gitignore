@@ -5,6 +5,8 @@
 *.sln.docstates
 
 
+!ClassStudentWinForm\WindowsFormsApp1\bin\img\Student\*
+
 [Dd]ebug/
 [Dd]ebugPublic/
 [Rr]elease/
@@ -15,7 +17,6 @@ x86/
 [Aa][Rr][Mm]/
 [Aa][Rr][Mm]64/
 bld/
-[Bb]in/
 [Oo]bj/
 [Ll]og/
 [Ll]ogs/

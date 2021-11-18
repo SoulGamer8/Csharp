@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1
 {
+    [Serializable]
     public class Teacher:User
     {
         private List<Student> studentsList = new List<Student>();
