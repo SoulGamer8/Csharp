@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace WindowsFormsApp1
 {
@@ -15,8 +11,9 @@ namespace WindowsFormsApp1
         public string Surname { get; set; }
         public int Age { get; set; }
         public string Sex { get; set; }
+        public string PathToPhoto { get; set; }
 
-        protected User(int id,string name, string surname, int age, string sex, Address address)
+        protected User(int id,string name, string surname, int age, string sex, Address address,string pathToPhoto)
         {
             Id = id;
             Name = name;
@@ -24,6 +21,7 @@ namespace WindowsFormsApp1
             Age = age;
             Sex = sex;
             Address = address;
+            PathToPhoto=pathToPhoto;
         }
 
     }

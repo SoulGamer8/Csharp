@@ -20,9 +20,9 @@ namespace WindowsFormsApp1
         }
 
     
-        public void TeacherAdd(int id,string name, string surname, int age, string sex, string country, string district, string city, string street, string housenumber, int studentLimit)
+        public void TeacherAdd(int id,string name, string surname, int age, string sex, string country, string district, string city, string street, string housenumber, int studentLimit,string path)
         {
-            teachersList.Add(new Teacher(id, name, surname, age, sex, new Address(country,district, city,street ,housenumber), studentLimit));
+            teachersList.Add(new Teacher(id, name, surname, age, sex, new Address(country,district, city,street ,housenumber), studentLimit, path));
         }
 
         public void RemoveTeacher(int number)

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,7 +13,7 @@ namespace WindowsFormsApp1
 {
     public partial class AddTeacher : Form
     {
-        public delegate void SaveSTeacher(string name, string surname, int age, string sex, string country, string district, string city, string street, string housenumber,int studentLimit);
+        public delegate void SaveSTeacher(string name, string surname, int age, string sex, string country, string district, string city, string street, string housenumber,int studentLimit,string path);
         public static event SaveSTeacher EventSaveTeacher;
 
         public AddTeacher()
@@ -24,20 +25,11 @@ namespace WindowsFormsApp1
 
         private void button2_Click(object sender, EventArgs e)
         {
-            int test;
-            if (!(int.TryParse(AgeBox.Text, out test)))
-                MessageBox.Show("Age must be number");
-            else if (Convert.ToInt32(StudentLimittBox.Text) <= 0)
-                MessageBox.Show("Student limitt be greater than or equal to 0");
-            else if (Convert.ToInt32(AgeBox.Text) < 0)
-                MessageBox.Show("Age Must be greater than 0");
-            else if(!(int.TryParse(StudentLimittBox.Text, out test)))
-                MessageBox.Show("Student Limitt must be number");
-            else
-            {
-                EventSaveTeacher?.Invoke(NameBox.Text, SurnameBox.Text, Convert.ToInt32(AgeBox.Text), SexBox.Text, CountryBox.Text, DistrictBox.Text, CityBox4.Text, StreetBox.Text, HousenumberBox.Text, Convert.ToInt32(StudentLimittBox.Text));
-                this.DialogResult = DialogResult.Cancel;
-            }
+            string newpath = Path.Combine(@"..\img\Teacher", NameBox.Text + " " + SurnameBox.Text + ".png");
+            File.Copy(pictureBox1.ImageLocation, newpath);
+
+            EventSaveTeacher?.Invoke(NameBox.Text, SurnameBox.Text, Convert.ToInt32(AgeBox.Text), SexBox.Text, CountryBox.Text, DistrictBox.Text, CityBox4.Text, StreetBox.Text, HousenumberBox.Text, Convert.ToInt32(StudentLimittBox.Text), newpath);
+            this.DialogResult = DialogResult.Cancel;
         }
 
         private void SetButtonEnabled()
@@ -154,6 +146,15 @@ namespace WindowsFormsApp1
             else
                 errorProvider1.SetError(HousenumberBox, string.Empty);
             SetButtonEnabled();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                pictureBox1.ImageLocation = openFileDialog1.FileName;
+                pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            }
         }
     }
 }

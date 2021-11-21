@@ -1,11 +1,12 @@
 ﻿using System;
+using System.IO;
 using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
     public partial class AddStudent : Form
     {
-        public delegate void SaveStudent(string name, string surname, int age, string sex, string country,string district,string city ,string street ,string housenumber, string teacher, string mark);
+        public delegate void SaveStudent(string name, string surname, int age, string sex, string country,string district,string city ,string street ,string housenumber, string teacher, string mark,string pathToPhoto);
         public static event SaveStudent EventSaveStudent;
 
 
@@ -47,10 +48,12 @@ namespace WindowsFormsApp1
 
         private void button2_Click(object sender, EventArgs e)
         {
+            string newpath = Path.Combine(@"..\img\Student", NameBox.Text + " " + SurnameBox.Text + ".png");
+            File.Copy(pictureBox1.ImageLocation, newpath);
 
             string[] words = comboBox2.Text.Split(' ');
             int numberTeacher = _teacherList.FindTeacher(words[0], words[1]);
-            EventSaveStudent?.Invoke(NameBox.Text, SurnameBox.Text, Convert.ToInt32(AgeBox.Text), SexBox.Text, CountryBox.Text, DistrictBox.Text, CityBox4.Text, StreetBox.Text, HousenumberBox.Text, comboBox2.Text, comboBox1.Text);
+            EventSaveStudent?.Invoke(NameBox.Text, SurnameBox.Text, Convert.ToInt32(AgeBox.Text), SexBox.Text, CountryBox.Text, DistrictBox.Text, CityBox4.Text, StreetBox.Text, HousenumberBox.Text, comboBox2.Text, comboBox1.Text, newpath);
             this.DialogResult = DialogResult.Cancel;
         }
 
@@ -181,5 +184,13 @@ namespace WindowsFormsApp1
             SetButtonEnabled();
         }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                pictureBox1.ImageLocation = openFileDialog1.FileName;
+                pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            }
+        }
     }
 }

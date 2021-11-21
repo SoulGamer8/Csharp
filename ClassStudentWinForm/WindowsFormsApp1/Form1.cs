@@ -13,10 +13,10 @@ namespace WindowsFormsApp1
         private TeacherList teacherList = new TeacherList();
         
         private int _numberTeacher;
+        DataTable dataTableTeacher = new DataTable();
 
         private DataTable dataTable = new DataTable();
 
-        DataGridViewImageColumn dgvImage = new DataGridViewImageColumn();
         public Main()
         {
             InitializeComponent();
@@ -31,26 +31,20 @@ namespace WindowsFormsApp1
         }
 
 
-        private void LoadSave()
-        {
-            try
-            {
-                string catalog = @"..\save\list.json";
-                teacherList = JsonConvert.DeserializeObject<TeacherList>(File.ReadAllText(catalog));
-                Reload();
-            }
-            catch
-            {
+       
 
-            }
-        }
-
-        private void Cheack()
+        private void InitialChart()
         {
-            if (teacherList.TeachersLst.Capacity == 0)
-                addNewStudentToolStripMenuItem.Enabled = false;
-            else
-                addNewStudentToolStripMenuItem.Enabled = true;
+            chart1.Series[0].Points.Clear();
+
+            foreach (Teacher teacher in teacherList.TeachersLst)
+            {
+                chart1.Series["Age"].Points.AddXY(teacher.Surname, teacher.Age);
+                foreach (Student student in teacher.StudentsList)
+                {
+                    chart1.Series["Age"].Points.AddXY(student.Surname, student.Age);
+                }
+            }
         }
 
         private void InitialTree()
@@ -65,36 +59,15 @@ namespace WindowsFormsApp1
 
 
             int i = 0;
-            int j = 0;
+
             foreach (Teacher teacher in teacherList.TeachersLst)
             {
-                treeView2.Nodes.Add(teacher.Surname);
-                treeView2.Nodes[i].Nodes.Add(teacher.Name);
-                treeView2.Nodes[i].Nodes.Add(Convert.ToString(teacher.Age));
-                treeView2.Nodes[i].Nodes.Add(teacher.Sex);
-                treeView2.Nodes[i].Nodes.Add("Address");
-                treeView2.Nodes[i].Nodes[3].Nodes.Add(teacher.Address.Country);
-                treeView2.Nodes[i].Nodes[3].Nodes.Add(teacher.Address.District);
-                treeView2.Nodes[i].Nodes[3].Nodes.Add(teacher.Address.City);
-                treeView2.Nodes[i].Nodes[3].Nodes.Add(teacher.Address.Street);
-                treeView2.Nodes[i].Nodes[3].Nodes.Add(teacher.Address.Housenumber);
+                treeView2.Nodes.Add(teacher.Surname + teacher.Name);
                 treeView2.Nodes[i].Nodes.Add("Student");
-                j = 0;
                 foreach (Student student in teacher.StudentsList)
                 {
-                    treeView2.Nodes[j].Nodes[4].Nodes.Add(student.Surname);
-                    treeView2.Nodes[j].Nodes[4].Nodes[0].Nodes.Add(student.Name);
-                    treeView2.Nodes[j].Nodes[4].Nodes[0].Nodes.Add(Convert.ToString(student.Age));
-                    treeView2.Nodes[j].Nodes[4].Nodes[0].Nodes.Add(student.Sex);
-                    treeView2.Nodes[j].Nodes[4].Nodes[0].Nodes.Add("Address");
-                    treeView2.Nodes[j].Nodes[4].Nodes[0].Nodes[3].Nodes.Add(student.Address.Country);
-                    treeView2.Nodes[j].Nodes[4].Nodes[0].Nodes[3].Nodes.Add(teacher.Address.District);
-                    treeView2.Nodes[j].Nodes[4].Nodes[0].Nodes[3].Nodes.Add(teacher.Address.City);
-                    treeView2.Nodes[j].Nodes[4].Nodes[0].Nodes[3].Nodes.Add(teacher.Address.Street);
-                    treeView2.Nodes[j].Nodes[4].Nodes[0].Nodes[3].Nodes.Add(teacher.Address.Housenumber);
-                    j++;
+                    treeView2.Nodes[i].Nodes[0].Nodes.Add(student.Surname + student.Name);
                 }
-
                 i++;
             }
 
@@ -102,22 +75,24 @@ namespace WindowsFormsApp1
 
         private void InitialGrid()
         {
-       
-            dataTable.Columns.Add("Id");
-            dataTable.Columns.Add("Name");
-            dataTable.Columns.Add("Surname");
-            dataTable.Columns.Add("Age");
-            dataTable.Columns.Add("Sex");
-            dataTable.Columns.Add("Country");
-            dataTable.Columns.Add("District");
-            dataTable.Columns.Add("City");
-            dataTable.Columns.Add("Street");
-            dataTable.Columns.Add("Housenumber");
-            dataTable.Columns.Add("Student List");
+            
 
-          
-            this.dataGridView1.DataSource = dataTable;
+            dataTableTeacher.Columns.Add("Id");
+            dataTableTeacher.Columns.Add("Name");
+            dataTableTeacher.Columns.Add("Surname");
+            dataTableTeacher.Columns.Add("Age");
+            dataTableTeacher.Columns.Add("Sex");
+            dataTableTeacher.Columns.Add("Country");
+            dataTableTeacher.Columns.Add("District");
+            dataTableTeacher.Columns.Add("City");
+            dataTableTeacher.Columns.Add("Street");
+            dataTableTeacher.Columns.Add("Housenumber");
+            dataTableTeacher.Columns.Add("Student List");
+
+            this.dataGridView1.DataSource = dataTableTeacher;
             DataGridColor();
+
+
         }
 
 
@@ -125,7 +100,7 @@ namespace WindowsFormsApp1
         {
             try
             {
-                dataTable.Rows.Clear();
+                dataTableTeacher.Rows.Clear();
             }
             catch (Exception)
             {
@@ -136,41 +111,33 @@ namespace WindowsFormsApp1
                 foreach (Teacher teacher in teacherList.TeachersLst)
                 {
 
-                    dataTable.Rows.Add(teacher.Id, teacher.Name, teacher.Surname, teacher.Age, teacher.Sex, teacher.Address.Country, teacher.Address.District, teacher.Address.City, teacher.Address.Street, teacher.Address.Housenumber, Convert.ToString(teacher.StudentsList.Count + "/" + teacher.LimitStudentList));
+                    dataTableTeacher.Rows.Add(teacher.Id, teacher.Name, teacher.Surname, teacher.Age, teacher.Sex, teacher.Address.Country, teacher.Address.District, teacher.Address.City, teacher.Address.Street, teacher.Address.Housenumber, Convert.ToString(teacher.StudentsList.Count + "/" + teacher.LimitStudentList));
                 }
-                this.dataGridView1.DataSource = dataTable;
+                LinkTeacher();
+                this.dataGridView1.DataSource = dataTableTeacher;
                 DataGridColor();
             }
         }
 
-        private void InitialDataGridStudent(int index)
+        private void LinkTeacher()
         {
-            DataTable dataTable = new DataTable();
-
-            dataTable.Columns.Add("Id");
-            dataTable.Columns.Add("Name");
-            dataTable.Columns.Add("Surname");
-            dataTable.Columns.Add("Age");
-            dataTable.Columns.Add("Sex");
-            dataTable.Columns.Add("Mark");
-            dataTable.Columns.Add("Country");
-            dataTable.Columns.Add("District");
-            dataTable.Columns.Add("City");
-            dataTable.Columns.Add("Street");
-            dataTable.Columns.Add("Housenumber");
-
-            int i = 1;
-            foreach (Student student in teacherList.TeachersLst[index].StudentsList)
+            for (int i = 0; i < dataGridView1.Rows.Count; i++)
             {
-                dataTable.Rows.Add(i, student.Name, student.Surname, student.Age, student.Sex, student.Marks, student.Address.Country, student.Address.District, student.Address.City, student.Address.Street, student.Address.Housenumber);
-                i++;
+                DataGridViewLinkCell linkCell = new DataGridViewLinkCell();
+                dataGridView1[10, i] = linkCell;
             }
-            this.dataGridView2.DataSource = dataTable;
+            for (int i = 0; i < dataGridView1.Rows.Count; i++)
+            {
+                DataGridViewLinkCell linkCell = new DataGridViewLinkCell();
+                dataGridView1[1, i] = linkCell;
+            }
         }
+
 
         private void dataGridView1_Sorted(object sender, EventArgs e)
         {
             DataGridColor();
+            LinkTeacher();
         }
 
 
@@ -192,11 +159,10 @@ namespace WindowsFormsApp1
                 MessageBox.Show("ERROR");
             } 
         }
-
+        /*
         private void DataGridImageTeacher()
         {
             dgvImage.HeaderText = "Image";
-            dgvImage.ImageLayout = DataGridViewImageCellLayout.Normal;
             if (!(dataGridView1.Columns.Contains(dgvImage)))
                 dataGridView1.Columns.Add(dgvImage);
 
@@ -207,7 +173,7 @@ namespace WindowsFormsApp1
             foreach (Teacher teacher in teacherList.TeachersLst)
             {
 
-                string fileName = teacher.Name + " " + teacher.Surname + ".jfif";
+                string fileName = teacher.Name + " " + teacher.Surname + ".png";
                
                 foreach (string findedFile in Directory.EnumerateFiles(catalog, fileName))
                 {
@@ -217,9 +183,12 @@ namespace WindowsFormsApp1
 
                     FI = new FileInfo(findedFile);
                     pictureBox.Image = Image.FromFile(FI.FullName);
+
+                    pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
                     MemoryStream ms = new MemoryStream();
                     pictureBox.Image.Save(ms, pictureBox.Image.RawFormat);
                     byte[] img = ms.ToArray();
+
                     dataGridView1.Rows[i].Cells[11].Value =Image.FromStream(ms);
 
 
@@ -242,7 +211,7 @@ namespace WindowsFormsApp1
             foreach (Student student in teacherList.TeachersLst[index].StudentsList)
             {
 
-                string fileName = student.Name + " " + student.Surname + ".jfif";
+                string fileName = student.Name + " " + student.Surname + ".png";
                
                 foreach (string findedFile in Directory.EnumerateFiles(catalog, fileName))
                 {
@@ -261,22 +230,28 @@ namespace WindowsFormsApp1
                 i++;
             }
         }
-
+        */
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
-                if (e.ColumnIndex == 10)
+                if (e.ColumnIndex == 10 )
                 {
                     if (teacherList.TeachersLst[Convert.ToInt32(dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells[0].Value)].StudentsList.Count == 0)
                         MessageBox.Show("Student list is empty");
                     else
                     {
                         InitialDataGridStudent(Convert.ToInt32(dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells[0].Value));
-                        DataGridImageStudent(Convert.ToInt32(dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells[0].Value));
                         _numberTeacher = Convert.ToInt32(dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells[0].Value);
                     }
                 }
+                if(e.ColumnIndex == 1)
+                {
+                    Teacher teacher = teacherList.TeachersLst[Convert.ToInt32(dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells[0].Value)];
+                    PhotoUser photoUser = new PhotoUser(teacher.Name,teacher.Surname,teacher.PathToPhoto,true);
+                    DialogResult result = photoUser.ShowDialog(this);
+                }
+               
             }
             catch
             {
@@ -285,34 +260,111 @@ namespace WindowsFormsApp1
             
         }
 
-        private void InitialChart()
+       
+        private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            chart1.Series[0].Points.Clear();
-
-            foreach (Teacher teacher in teacherList.TeachersLst)
-            {
-                chart1.Series["Age"].Points.AddXY(teacher.Surname, teacher.Age);
-                foreach (Student student in teacher.StudentsList)
-                {
-                    chart1.Series["Age"].Points.AddXY(student.Surname, student.Age);
-                }
-            }
+            (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = $"Surname LIKE '%{textBox1.Text}%'";
         }
 
 
-        private void AddStudentInList(string name, string surname, int age, string sex, string country, string district, string city, string street, string housenumber, string teacher , string marks)
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                teacherList.RemoveTeacher(dataGridView1.SelectedRows[0].Index);
+                MessageBox.Show("Successfully deleted", "Successfully", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Reload();
+                Cheack();
+            }
+            catch (System.ArgumentOutOfRangeException)
+            {
+                MessageBox.Show("Select teacher to remove", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+        private void InitialDataGridStudent(int index)
+        {
+
+            DataTable dataTableStudent = new DataTable();
+
+            dataTableStudent.Columns.Add("Id");
+            dataTableStudent.Columns.Add("Name");
+            dataTableStudent.Columns.Add("Surname");
+            dataTableStudent.Columns.Add("Age");
+            dataTableStudent.Columns.Add("Sex");
+            dataTableStudent.Columns.Add("Mark");
+            dataTableStudent.Columns.Add("Country");
+            dataTableStudent.Columns.Add("District");
+            dataTableStudent.Columns.Add("City");
+            dataTableStudent.Columns.Add("Street");
+            dataTableStudent.Columns.Add("Housenumber");
+
+            int i = 0;
+            foreach (Student student in teacherList.TeachersLst[index].StudentsList)
+            {
+                dataTableStudent.Rows.Add(i, student.Name, student.Surname, student.Age, student.Sex, student.Marks, student.Address.Country, student.Address.District, student.Address.City, student.Address.Street, student.Address.Housenumber);
+                i++;
+            }
+
+            this.dataGridView2.DataSource = dataTableStudent;
+            LinkStudent();
+        }
+
+        private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (e.ColumnIndex == 1)
+                {
+                    Student student = teacherList.TeachersLst[_numberTeacher].StudentsList[Convert.ToInt32(dataGridView2.Rows[dataGridView2.SelectedCells[0].RowIndex].Cells[0].Value)];
+                    PhotoUser photoUser = new PhotoUser(student.Name,student.Surname,student.PathToPhoto,false);
+                    DialogResult result = photoUser.ShowDialog(this);
+                }
+
+            }
+            catch
+            {
+
+            } 
+
+        }
+
+        private void LinkStudent()
+        {
+            for (int i = 0; i < dataGridView2.Rows.Count; i++)
+            {
+                DataGridViewLinkCell linkCell = new DataGridViewLinkCell();
+                dataGridView2[1, i] = linkCell;
+            }
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                (dataGridView2.DataSource as DataTable).DefaultView.RowFilter = $"Surname LIKE '%{textBox2.Text}%'";
+            }
+            catch
+            {
+            }
+
+        }
+
+
+        private void AddStudentInList(string name, string surname, int age, string sex, string country, string district, string city, string street, string housenumber, string teacher , string marks,string PathToPhoto)
         {
             string[] words = teacher.Split(' ');
             int numberTeacher = teacherList.FindTeacher(words[0], words[1]);
-            teacherList.TeachersLst[numberTeacher].AddStudent(teacherList.TeachersLst[numberTeacher].StudentsList.Count, name, surname, age, sex, country, district, city, street, housenumber, marks);
+            teacherList.TeachersLst[numberTeacher].AddStudent(teacherList.TeachersLst[numberTeacher].StudentsList.Count, name, surname, age, sex, country, district, city, street, housenumber, marks, PathToPhoto);
             int lenStudentsList = teacherList.TeachersLst[numberTeacher].StudentsList.Capacity;
             Reload();
 
         }
 
-        private void AddTeacherInList(string name, string surname, int age, string sex, string country, string district, string city, string street, string housenumber, int studentLimit)
+        private void AddTeacherInList(string name, string surname, int age, string sex, string country, string district, string city, string street, string housenumber, int studentLimit,string path)
         {
-            teacherList.TeacherAdd(teacherList.TeachersLst.Count,name, surname, age, sex, country, district, city, street, housenumber, studentLimit);
+            teacherList.TeacherAdd(teacherList.TeachersLst.Count,name, surname, age, sex, country, district, city, street, housenumber, studentLimit, path);
             Reload();
             Cheack();
         }
@@ -331,22 +383,7 @@ namespace WindowsFormsApp1
         }
 
 
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-            try
-            {
-                teacherList.RemoveTeacher(dataGridView1.SelectedRows[0].Index);
-                MessageBox.Show("Successfully deleted", "Successfully", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Reload();
-                Cheack();
-            }
-            catch (System.ArgumentOutOfRangeException)
-            {
-                MessageBox.Show("Select teacher to remove", "Error", MessageBoxButtons.OK,MessageBoxIcon.Error);
-            }
-   
-        }
-
+      
 
         private void loadToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
@@ -367,11 +404,7 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-            (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = $"Surname LIKE '%{textBox1.Text}%'";
-        }
-
+     
         private void jSONToolStripMenuItem_Click(object sender, EventArgs e)
         {
             saveFileDialog1.Filter = "Text files(*.json)|*.json|All files(*.*)|*.*";
@@ -417,26 +450,22 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                (dataGridView2.DataSource as DataTable).DefaultView.RowFilter = $"Surname LIKE '%{textBox2.Text}%'";
-            }
-            catch 
-            {
-            }
-           
-        }
 
 
         private void Reload()
         {
             RealodGrid();
-            //InitialTree();
+            InitialTree();
             InitialChart();
             Cheack();
-            DataGridImageTeacher();
+        }
+
+        private void Cheack()
+        {
+            if (teacherList.TeachersLst.Capacity == 0)
+                addNewStudentToolStripMenuItem.Enabled = false;
+            else
+                addNewStudentToolStripMenuItem.Enabled = true;
         }
 
        

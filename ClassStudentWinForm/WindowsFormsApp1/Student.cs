@@ -10,9 +10,8 @@ namespace WindowsFormsApp1
     public class Student:User
     {
         public string Marks;
-
-        public Student(int id,string name, string surname, int age, string sex, Address address, string marks)
-            : base(id, name, surname, age, sex, address)
+        public Student(int id,string name, string surname, int age, string sex, Address address, string marks,string pathToPhoto)
+            : base(id, name, surname, age, sex, address, pathToPhoto)
         {
             Marks = marks;
         }

@@ -7,10 +7,12 @@ using System.Threading.Tasks;
 namespace WindowsFormsApp1
 {
     [Serializable]
-    public class Teacher:User
+    public class Teacher : User
     {
+
         private List<Student> studentsList = new List<Student>();
         private int _limitCounter = 0;
+        public int LimitStudentList { get; set; }
 
         public List<Student> StudentsList
         {
@@ -20,19 +22,17 @@ namespace WindowsFormsApp1
             }
         }
 
-        public int LimitStudentList { get; set; }
-      
 
-        public Teacher(int id,string name, string surname, int age, string sex, Address address, int limitStudentList)
-            : base(id,name, surname, age, sex, address)
+        public Teacher(int id,string name, string surname, int age, string sex, Address address, int limitStudentList,string pathToPhoto)
+            : base(id,name, surname, age, sex, address,pathToPhoto)
         {
             LimitStudentList = limitStudentList;
             studentsList = new List<Student>(limitStudentList);
         }
 
-        public void AddStudent(int id ,string name, string surname,int age, string sex, string country, string district, string city , string street , string housenumber, string marks)
+        public void AddStudent(int id ,string name, string surname,int age, string sex, string country, string district, string city , string street , string housenumber, string marks,string PathToPhoto)
         {
-            studentsList.Add(new Student(id,name, surname, age, sex, new Address(country, district, city , street , housenumber), marks));
+            studentsList.Add(new Student(id,name, surname, age, sex, new Address(country, district, city , street , housenumber), marks,PathToPhoto));
             _limitCounter++;
         }
 
