@@ -39,10 +39,10 @@ namespace WindowsFormsApp1
 
             foreach (Teacher teacher in teacherList.TeachersLst)
             {
-                chart1.Series["Age"].Points.AddXY(teacher.Surname, teacher.Age);
+                chart1.Series["Teacher"].Points.AddXY(teacher.Surname , teacher.Age);
                 foreach (Student student in teacher.StudentsList)
                 {
-                    chart1.Series["Age"].Points.AddXY(student.Surname, student.Age);
+                    chart1.Series["Student"].Points.AddXY(student.Surname, student.Age);
                 }
             }
         }
@@ -159,78 +159,7 @@ namespace WindowsFormsApp1
                 MessageBox.Show("ERROR");
             } 
         }
-        /*
-        private void DataGridImageTeacher()
-        {
-            dgvImage.HeaderText = "Image";
-            if (!(dataGridView1.Columns.Contains(dgvImage)))
-                dataGridView1.Columns.Add(dgvImage);
 
-            string catalog = @"..\img\Teacher";
-            int i = 0;
-
-
-            foreach (Teacher teacher in teacherList.TeachersLst)
-            {
-
-                string fileName = teacher.Name + " " + teacher.Surname + ".png";
-               
-                foreach (string findedFile in Directory.EnumerateFiles(catalog, fileName))
-                {
-                    FileInfo FI;
-
-                    PictureBox pictureBox = new PictureBox();
-
-                    FI = new FileInfo(findedFile);
-                    pictureBox.Image = Image.FromFile(FI.FullName);
-
-                    pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
-                    MemoryStream ms = new MemoryStream();
-                    pictureBox.Image.Save(ms, pictureBox.Image.RawFormat);
-                    byte[] img = ms.ToArray();
-
-                    dataGridView1.Rows[i].Cells[11].Value =Image.FromStream(ms);
-
-
-                }
-                i++;
-            }
-        }
-
-        private void DataGridImageStudent(int index)
-        {
-            DataGridViewImageColumn dgvImage = new DataGridViewImageColumn();
-
-            dgvImage.HeaderText = "Image";
-            dgvImage.ImageLayout = DataGridViewImageCellLayout.Normal;
-            dataGridView2.Columns.Add(dgvImage);
-
-            string catalog = @"..\img\Student";
-            int i = 0;
-          
-            foreach (Student student in teacherList.TeachersLst[index].StudentsList)
-            {
-
-                string fileName = student.Name + " " + student.Surname + ".png";
-               
-                foreach (string findedFile in Directory.EnumerateFiles(catalog, fileName))
-                {
-                    FileInfo FI;
-
-                    PictureBox pictureBox = new PictureBox();
-
-                    FI = new FileInfo(findedFile);
-                    pictureBox.Image = Image.FromFile(FI.FullName);
-                    MemoryStream ms = new MemoryStream();
-                    pictureBox.Image.Save(ms, pictureBox.Image.RawFormat);
-                    byte[] img = ms.ToArray();
-
-                    dataGridView2.Rows[i].Cells[11].Value = img;
-                }
-                i++;
-            }
-        }
-        */
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try

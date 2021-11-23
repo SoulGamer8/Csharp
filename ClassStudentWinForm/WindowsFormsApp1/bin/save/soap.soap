@@ -1,0 +1,122 @@
+<SOAP-ENV:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:clr="http://schemas.microsoft.com/clr/" SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+  <SOAP-ENV:Body>
+    <a1:TeacherList id="ref-1" xmlns:a1="http://schemas.microsoft.com/clr/nsassem/WindowsFormsApp1/WindowsFormsApp1%2C%20Version%3D1.0.0.0%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3Dnull">
+      <teachersList href="#ref-2" />
+    </a1:TeacherList>
+    <a2:_x0030__x002C__x0020_Culture_x003D_neutral_x002C__x0020_PublicKeyToken_x003D_null_x005D__x005D_ id="ref-2" xmlns:a2="http://schemas.microsoft.com/clr/ns/System.Collections.Generic.List`1[[WindowsFormsApp1.Teacher, WindowsFormsApp1, Version=1.0.0">
+      <_items href="#ref-3" />
+      <_size>2</_size>
+      <_version>2</_version>
+    </a2:_x0030__x002C__x0020_Culture_x003D_neutral_x002C__x0020_PublicKeyToken_x003D_null_x005D__x005D_>
+    <SOAP-ENC:Array id="ref-3" xmlns:a1="http://schemas.microsoft.com/clr/nsassem/WindowsFormsApp1/WindowsFormsApp1%2C%20Version%3D1.0.0.0%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3Dnull" SOAP-ENC:arrayType="a1:Teacher[4]">
+      <item href="#ref-4" />
+      <item href="#ref-5" />
+    </SOAP-ENC:Array>
+    <a1:Teacher id="ref-4" xmlns:a1="http://schemas.microsoft.com/clr/nsassem/WindowsFormsApp1/WindowsFormsApp1%2C%20Version%3D1.0.0.0%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3Dnull">
+      <studentsList href="#ref-6" />
+      <_limitCounter>2</_limitCounter>
+      <_x003C_LimitStudentList_x003E_k__BackingField>2</_x003C_LimitStudentList_x003E_k__BackingField>
+      <User_x002B__x003C_Address_x003E_k__BackingField href="#ref-7" />
+      <User_x002B__x003C_Id_x003E_k__BackingField>0</User_x002B__x003C_Id_x003E_k__BackingField>
+      <User_x002B__x003C_Name_x003E_k__BackingField id="ref-8">Randy</User_x002B__x003C_Name_x003E_k__BackingField>
+      <User_x002B__x003C_Surname_x003E_k__BackingField id="ref-9">Anderson</User_x002B__x003C_Surname_x003E_k__BackingField>
+      <User_x002B__x003C_Age_x003E_k__BackingField>50</User_x002B__x003C_Age_x003E_k__BackingField>
+      <User_x002B__x003C_Sex_x003E_k__BackingField id="ref-10">Male</User_x002B__x003C_Sex_x003E_k__BackingField>
+      <User_x002B__x003C_PathToPhoto_x003E_k__BackingField id="ref-11">..\img\Teacher\Randy Anderson.png</User_x002B__x003C_PathToPhoto_x003E_k__BackingField>
+    </a1:Teacher>
+    <a1:Teacher id="ref-5" xmlns:a1="http://schemas.microsoft.com/clr/nsassem/WindowsFormsApp1/WindowsFormsApp1%2C%20Version%3D1.0.0.0%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3Dnull">
+      <studentsList href="#ref-12" />
+      <_limitCounter>1</_limitCounter>
+      <_x003C_LimitStudentList_x003E_k__BackingField>3</_x003C_LimitStudentList_x003E_k__BackingField>
+      <User_x002B__x003C_Address_x003E_k__BackingField href="#ref-13" />
+      <User_x002B__x003C_Id_x003E_k__BackingField>1</User_x002B__x003C_Id_x003E_k__BackingField>
+      <User_x002B__x003C_Name_x003E_k__BackingField id="ref-14">Jennifer</User_x002B__x003C_Name_x003E_k__BackingField>
+      <User_x002B__x003C_Surname_x003E_k__BackingField id="ref-15">Marshall</User_x002B__x003C_Surname_x003E_k__BackingField>
+      <User_x002B__x003C_Age_x003E_k__BackingField>30</User_x002B__x003C_Age_x003E_k__BackingField>
+      <User_x002B__x003C_Sex_x003E_k__BackingField id="ref-16">female</User_x002B__x003C_Sex_x003E_k__BackingField>
+      <User_x002B__x003C_PathToPhoto_x003E_k__BackingField id="ref-17">..\img\Teacher\Jennifer Marshall.png</User_x002B__x003C_PathToPhoto_x003E_k__BackingField>
+    </a1:Teacher>
+    <a3:_x0030__x002C__x0020_Culture_x003D_neutral_x002C__x0020_PublicKeyToken_x003D_null_x005D__x005D_ id="ref-6" xmlns:a3="http://schemas.microsoft.com/clr/ns/System.Collections.Generic.List`1[[WindowsFormsApp1.Student, WindowsFormsApp1, Version=1.0.0">
+      <_items href="#ref-18" />
+      <_size>2</_size>
+      <_version>2</_version>
+    </a3:_x0030__x002C__x0020_Culture_x003D_neutral_x002C__x0020_PublicKeyToken_x003D_null_x005D__x005D_>
+    <a1:Address id="ref-7" xmlns:a1="http://schemas.microsoft.com/clr/nsassem/WindowsFormsApp1/WindowsFormsApp1%2C%20Version%3D1.0.0.0%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3Dnull">
+      <_x003C_Country_x003E_k__BackingField id="ref-19">ukr</_x003C_Country_x003E_k__BackingField>
+      <_x003C_District_x003E_k__BackingField id="ref-20">ukr</_x003C_District_x003E_k__BackingField>
+      <_x003C_City_x003E_k__BackingField id="ref-21">ukr</_x003C_City_x003E_k__BackingField>
+      <_x003C_Street_x003E_k__BackingField id="ref-22">ukr</_x003C_Street_x003E_k__BackingField>
+      <_x003C_Housenumber_x003E_k__BackingField id="ref-23">ukr</_x003C_Housenumber_x003E_k__BackingField>
+    </a1:Address>
+    <a3:_x0030__x002C__x0020_Culture_x003D_neutral_x002C__x0020_PublicKeyToken_x003D_null_x005D__x005D_ id="ref-12" xmlns:a3="http://schemas.microsoft.com/clr/ns/System.Collections.Generic.List`1[[WindowsFormsApp1.Student, WindowsFormsApp1, Version=1.0.0">
+      <_items href="#ref-24" />
+      <_size>1</_size>
+      <_version>1</_version>
+    </a3:_x0030__x002C__x0020_Culture_x003D_neutral_x002C__x0020_PublicKeyToken_x003D_null_x005D__x005D_>
+    <a1:Address id="ref-13" xmlns:a1="http://schemas.microsoft.com/clr/nsassem/WindowsFormsApp1/WindowsFormsApp1%2C%20Version%3D1.0.0.0%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3Dnull">
+      <_x003C_Country_x003E_k__BackingField id="ref-25">ukr</_x003C_Country_x003E_k__BackingField>
+      <_x003C_District_x003E_k__BackingField id="ref-26">ukr</_x003C_District_x003E_k__BackingField>
+      <_x003C_City_x003E_k__BackingField id="ref-27">ukr</_x003C_City_x003E_k__BackingField>
+      <_x003C_Street_x003E_k__BackingField id="ref-28">ukr</_x003C_Street_x003E_k__BackingField>
+      <_x003C_Housenumber_x003E_k__BackingField id="ref-29">ukr</_x003C_Housenumber_x003E_k__BackingField>
+    </a1:Address>
+    <SOAP-ENC:Array id="ref-18" xmlns:a1="http://schemas.microsoft.com/clr/nsassem/WindowsFormsApp1/WindowsFormsApp1%2C%20Version%3D1.0.0.0%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3Dnull" SOAP-ENC:arrayType="a1:Student[2]">
+      <item href="#ref-30" />
+      <item href="#ref-31" />
+    </SOAP-ENC:Array>
+    <SOAP-ENC:Array id="ref-24" xmlns:a1="http://schemas.microsoft.com/clr/nsassem/WindowsFormsApp1/WindowsFormsApp1%2C%20Version%3D1.0.0.0%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3Dnull" SOAP-ENC:arrayType="a1:Student[3]">
+      <item href="#ref-32" />
+    </SOAP-ENC:Array>
+    <a1:Student id="ref-30" xmlns:a1="http://schemas.microsoft.com/clr/nsassem/WindowsFormsApp1/WindowsFormsApp1%2C%20Version%3D1.0.0.0%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3Dnull">
+      <Marks id="ref-33">B</Marks>
+      <User_x002B__x003C_Address_x003E_k__BackingField href="#ref-34" />
+      <User_x002B__x003C_Id_x003E_k__BackingField>0</User_x002B__x003C_Id_x003E_k__BackingField>
+      <User_x002B__x003C_Name_x003E_k__BackingField id="ref-35">Steven</User_x002B__x003C_Name_x003E_k__BackingField>
+      <User_x002B__x003C_Surname_x003E_k__BackingField id="ref-36">Hansen</User_x002B__x003C_Surname_x003E_k__BackingField>
+      <User_x002B__x003C_Age_x003E_k__BackingField>20</User_x002B__x003C_Age_x003E_k__BackingField>
+      <User_x002B__x003C_Sex_x003E_k__BackingField id="ref-37">Male</User_x002B__x003C_Sex_x003E_k__BackingField>
+      <User_x002B__x003C_PathToPhoto_x003E_k__BackingField id="ref-38">..\img\Student\Steven Hansen.png</User_x002B__x003C_PathToPhoto_x003E_k__BackingField>
+    </a1:Student>
+    <a1:Student id="ref-31" xmlns:a1="http://schemas.microsoft.com/clr/nsassem/WindowsFormsApp1/WindowsFormsApp1%2C%20Version%3D1.0.0.0%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3Dnull">
+      <Marks id="ref-39">A</Marks>
+      <User_x002B__x003C_Address_x003E_k__BackingField href="#ref-40" />
+      <User_x002B__x003C_Id_x003E_k__BackingField>1</User_x002B__x003C_Id_x003E_k__BackingField>
+      <User_x002B__x003C_Name_x003E_k__BackingField id="ref-41">Jerry</User_x002B__x003C_Name_x003E_k__BackingField>
+      <User_x002B__x003C_Surname_x003E_k__BackingField id="ref-42">Garrett</User_x002B__x003C_Surname_x003E_k__BackingField>
+      <User_x002B__x003C_Age_x003E_k__BackingField>22</User_x002B__x003C_Age_x003E_k__BackingField>
+      <User_x002B__x003C_Sex_x003E_k__BackingField id="ref-43">Male</User_x002B__x003C_Sex_x003E_k__BackingField>
+      <User_x002B__x003C_PathToPhoto_x003E_k__BackingField id="ref-44">..\img\Student\Jerry Garrett.png</User_x002B__x003C_PathToPhoto_x003E_k__BackingField>
+    </a1:Student>
+    <a1:Student id="ref-32" xmlns:a1="http://schemas.microsoft.com/clr/nsassem/WindowsFormsApp1/WindowsFormsApp1%2C%20Version%3D1.0.0.0%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3Dnull">
+      <Marks id="ref-45">D</Marks>
+      <User_x002B__x003C_Address_x003E_k__BackingField href="#ref-46" />
+      <User_x002B__x003C_Id_x003E_k__BackingField>0</User_x002B__x003C_Id_x003E_k__BackingField>
+      <User_x002B__x003C_Name_x003E_k__BackingField id="ref-47">Judith</User_x002B__x003C_Name_x003E_k__BackingField>
+      <User_x002B__x003C_Surname_x003E_k__BackingField id="ref-48">Evans</User_x002B__x003C_Surname_x003E_k__BackingField>
+      <User_x002B__x003C_Age_x003E_k__BackingField>19</User_x002B__x003C_Age_x003E_k__BackingField>
+      <User_x002B__x003C_Sex_x003E_k__BackingField id="ref-49">Female</User_x002B__x003C_Sex_x003E_k__BackingField>
+      <User_x002B__x003C_PathToPhoto_x003E_k__BackingField id="ref-50">..\img\Student\Judith Evans.png</User_x002B__x003C_PathToPhoto_x003E_k__BackingField>
+    </a1:Student>
+    <a1:Address id="ref-34" xmlns:a1="http://schemas.microsoft.com/clr/nsassem/WindowsFormsApp1/WindowsFormsApp1%2C%20Version%3D1.0.0.0%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3Dnull">
+      <_x003C_Country_x003E_k__BackingField id="ref-51">ukr</_x003C_Country_x003E_k__BackingField>
+      <_x003C_District_x003E_k__BackingField id="ref-52">ukr</_x003C_District_x003E_k__BackingField>
+      <_x003C_City_x003E_k__BackingField id="ref-53">ukr</_x003C_City_x003E_k__BackingField>
+      <_x003C_Street_x003E_k__BackingField id="ref-54">ukr</_x003C_Street_x003E_k__BackingField>
+      <_x003C_Housenumber_x003E_k__BackingField id="ref-55">ukr</_x003C_Housenumber_x003E_k__BackingField>
+    </a1:Address>
+    <a1:Address id="ref-40" xmlns:a1="http://schemas.microsoft.com/clr/nsassem/WindowsFormsApp1/WindowsFormsApp1%2C%20Version%3D1.0.0.0%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3Dnull">
+      <_x003C_Country_x003E_k__BackingField id="ref-56">ukr</_x003C_Country_x003E_k__BackingField>
+      <_x003C_District_x003E_k__BackingField id="ref-57">ukr</_x003C_District_x003E_k__BackingField>
+      <_x003C_City_x003E_k__BackingField id="ref-58">ukr</_x003C_City_x003E_k__BackingField>
+      <_x003C_Street_x003E_k__BackingField id="ref-59">ukrukr</_x003C_Street_x003E_k__BackingField>
+      <_x003C_Housenumber_x003E_k__BackingField id="ref-60">ukr</_x003C_Housenumber_x003E_k__BackingField>
+    </a1:Address>
+    <a1:Address id="ref-46" xmlns:a1="http://schemas.microsoft.com/clr/nsassem/WindowsFormsApp1/WindowsFormsApp1%2C%20Version%3D1.0.0.0%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3Dnull">
+      <_x003C_Country_x003E_k__BackingField id="ref-61">ukr</_x003C_Country_x003E_k__BackingField>
+      <_x003C_District_x003E_k__BackingField id="ref-62">ukr</_x003C_District_x003E_k__BackingField>
+      <_x003C_City_x003E_k__BackingField id="ref-63">ukr</_x003C_City_x003E_k__BackingField>
+      <_x003C_Street_x003E_k__BackingField id="ref-64">ukr</_x003C_Street_x003E_k__BackingField>
+      <_x003C_Housenumber_x003E_k__BackingField id="ref-65">ukr</_x003C_Housenumber_x003E_k__BackingField>
+    </a1:Address>
+  </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
